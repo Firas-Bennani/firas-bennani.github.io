@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firas Bennani | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #050505;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-hover: rgba(255, 255, 255, 0.06);
+            --accent-primary: #3b82f6;
+            --accent-secondary: #8b5cf6;
+            --accent-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --font-display: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            margin: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background Glow */
+        .bg-glow {
+            position: fixed;
+            top: -20%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+            animation: float 15s ease-in-out infinite alternate;
+        }
+
+        .bg-glow-2 {
+            position: fixed;
+            bottom: -20%;
+            right: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+            animation: float 20s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                transform: translate(5%, 5%) scale(1.1);
+            }
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .brand {
+            font-family: var(--font-display);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            padding: 1.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(5, 5, 5, 0.7);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            letter-spacing: -1px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 2.5rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: var(--accent-gradient);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            padding: 10rem 0 8rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #10b981;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 5.5rem;
+            margin: 0 0 1.5rem;
+            line-height: 1.1;
+            letter-spacing: -3px;
+            font-weight: 700;
+        }
+
+        .text-gradient {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 3.5rem;
+            font-weight: 300;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            font-family: var(--font-display);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(139, 92, 246, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-main);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: var(--glass-hover);
+            transform: translateY(-3px);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* --- Generic Section Styles --- */
+        section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3.5rem;
+            text-align: center;
+            font-weight: 600;
+            letter-spacing: -1px;
+        }
+
+        /* --- Grid Layouts --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--glass-bg);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Interactive Glow Effect on Cards */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.05), transparent 40%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        .card h4 {
+            color: var(--accent-primary);
+            font-size: 1.2rem;
+            margin: 0 0 1rem 0;
+        }
+
+        .card .date {
+            color: var(--accent-primary);
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+            font-family: var(--font-display);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Link Cards */
+        a.card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            outline: none;
+        }
+
+        a.card-link:hover .card {
+            transform: translateY(-8px);
+            border-color: rgba(139, 92, 246, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(139, 92, 246, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .project-arrow {
+            position: absolute;
+            top: 2.5rem;
+            right: 2.5rem;
+            opacity: 0;
+            transform: translate(-10px, 10px);
+            transition: all 0.3s ease;
+            color: var(--accent-secondary);
+        }
+
+        a.card-link:hover .project-arrow {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+
+        /* --- Specific Section Tweaks --- */
+        .skills-grid {
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skills-grid .card {
+            padding: 2rem;
+            text-align: center;
+            align-items: center;
+        }
+
+        /* --- Reveal Animation --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 6rem 0 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+        }
+
+        footer h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .social-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .social-links a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 8px;
+            bottom: -2px;
+            left: 0;
+            background: var(--accent-primary);
+            opacity: 0.3;
+            z-index: -1;
+            transition: height 0.2s, opacity 0.2s;
+        }
+
+        .social-links a:hover {
+            color: #fff;
+        }
+
+        .social-links a:hover::after {
+            height: 100%;
+            opacity: 0.8;
+            background: var(--accent-gradient);
+        }
+
+        .copyright {
+            color: #52525b;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 6rem 0;
+            }
+
+            section {
+                padding: 4rem 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
+
+    <div class="container">
+        <header>
+            <div class="brand">
+                <img src="Screenshot_2026-03-16_165156-removebg-preview.png" alt="Bennani Firas Logo"
+                    style="height: 45px; width: auto; display: block;">
+            </div>
+            <nav class="nav-links">
+                <a href="#experience">Experience</a>
+                <a href="#expertise">Expertise</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+
+        <section class="hero reveal">
+            <div class="status-badge">
+                <span class="status-dot"></span>
+                Available for opportunities
+            </div>
+            <h1>Firas <span class="text-gradient">Bennani</span></h1>
+            <p>Engineering student in advanced technologies at ENSTAB, specializing in AI and Data Science. Expert in
+                machine training and data optimization for ideal industrial service.</p>
+            <div class="cta-group">
+                <a href="CV_Bennani_Firas1.pdf" target="_blank" class="btn btn-primary">Download CV</a>
+                <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                <a href="https://www.linkedin.com/in/firas-bennani-a57482160/" target="_blank"
+                    class="btn btn-secondary">LinkedIn</a>
+                <a href="https://github.com/Firas-Bennani" target="_blank" class="btn btn-secondary">GitHub</a>
+            </div>
+        </section>
+
+        <section id="experience" class="reveal">
+            <h2>Professional Experience</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Web Developer</h3>
+                    <p class="date">SBcom | June 2025 – Sept 2026</p>
+                    <p>Focus on Python, JavaScript, and LangChain for backend logic with Gradio-based frontends,
+                        delivering robust web solutions and intelligent interfaces.</p>
+                </div>
+                <div class="card">
+                    <h3>IT Developer</h3>
+                    <p class="date">EXDEV | Sept 2024 – June 2025</p>
+                    <p>Development in Python, C++, and C#. Architected backend infrastructure and managed large, complex
+                        datasets leveraging Power BI and Excel for analytics.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="certifications" class="reveal">
+            <h2>NVIDIA Certifications</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>RAG & Agents</h3>
+                    <p>Building RAG Agents with LLMs & Building LLM Applications with Prompt Engineering.</p>
+                </div>
+                <div class="card">
+                    <h3>Generative AI</h3>
+                    <p>Generative AI with Diffusion Models & Rapid Application Development with LLMs.</p>
+                </div>
+                <div class="card">
+                    <h3>Accelerated Computing</h3>
+                    <p>Fundamentals of Accelerated Computing with CUDA Python & Introduction to Transformers.</p>
+                </div>
+                <div class="card">
+                    <h3>Deep Learning</h3>
+                    <p>Getting Started with Deep Learning & Model Optimization pipelines.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="expertise" class="reveal">
+            <h2>Technical Expertise</h2>
+            <div class="grid skills-grid">
+                <div class="card">
+                    <h4>Agents & RAG</h4>
+                    <p>LangChain, FAISS, Indexing, Semantic Search</p>
+                </div>
+                <div class="card">
+                    <h4>Deep Learning</h4>
+                    <p>PyTorch, CNN architectures, VGG16, Transform models</p>
+                </div>
+                <div class="card">
+                    <h4>GPU Optimization</h4>
+                    <p>CUDA, Numba, Mixed Precision, TensorRT</p>
+                </div>
+                <div class="card">
+                    <h4>DevOps</h4>
+                    <p>Docker, FastAPI, CI/CD, Containerization</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="reveal">
+            <h2>Key Projects</h2>
+            <div class="grid">
+                <a href="https://github.com/Firas-Bennani" target="_blank" class="card-link">
+                    <div class="card">
+                        <svg class="project-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                        <h3>RAG Evaluation Pipeline</h3>
+                        <p class="date">Llama-3.1 • LangChain</p>
+                        <p>A production-ready LLM-as-a-Judge system designed for rigorous pipeline evaluation and
+                            performance metrics generation.</p>
+                    </div>
+                </a>
+                <a href="https://github.com/Firas-Bennani" target="_blank" class="card-link">
+                    <div class="card">
+                        <svg class="project-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                        <h3>Deep Learning Object Recognition</h3>
+                        <p class="date">VGG16 • PyTorch</p>
+                        <p>State-of-the-art recognition model achieving 95% accuracy on robust datasets leveraging
+                            Transfer Learning techniques.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section id="education" class="reveal">
+            <h2>Education</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>ENSTAB</h3>
+                    <p class="date">Engineering Cycle (2025–Present)</p>
+                    <p>Advanced Technologies. Focused on intelligent systems and architecture.</p>
+                </div>
+                <div class="card">
+                    <h3>ESSTHS</h3>
+                    <p class="date">Preparatory Cycle (2023–2025)</p>
+                    <p>Intensive Mathematics and Physics preparatory program.</p>
+                </div>
+                <div class="card">
+                    <h3>Lycée Pilote Bizerte</h3>
+                    <p class="date">Baccalaureate (2019–2023)</p>
+                    <p>Graduated with high honors in Mathematics.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer id="contact" class="reveal">
+            <h2>Let's Work Together</h2>
+            <div class="contact-info">
+                firas.bennani29@gmail.com <span style="margin: 0 1rem; opacity: 0.3;">|</span> +216 29 795 430
+            </div>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/firas-bennani-a57482160/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/Firas-Bennani" target="_blank">GitHub</a>
+                <a href="mailto:firas.bennani29@gmail.com">Gmail</a>
+            </div>
+            <p class="copyright">© 2026 Firas Bennani.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Simple scroll reveal
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // trigger on load
+
+        // CSS variable for mouse position in cards for glow effect
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect(),
+                    x = e.clientX - rect.left,
+                    y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+</body>
+
+</html>
